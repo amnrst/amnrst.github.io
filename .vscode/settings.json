@@ -1,0 +1,16 @@
+{
+    "grammarly.overrides": [
+        {
+            "files": [
+                "**/how-to-solve-n-queen-in-js.md"
+            ],
+            "config": {
+                "audience": "general",
+                "dialect": "american",
+                "domain": "academic",
+                "emotions": [],
+                "goals": []
+            }
+        }
+    ]
+}
