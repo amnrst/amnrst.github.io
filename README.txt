@@ -1,0 +1,1 @@
+Use "Markdown Preview Enhanced" from Visual Studio Code to generate the html files.
