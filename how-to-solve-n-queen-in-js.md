@@ -132,3 +132,5 @@ Here is the output
 ]
 { solutions: 10 }
 ```
+
+@import "index.md"
