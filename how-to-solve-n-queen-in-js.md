@@ -92,7 +92,7 @@ function nQueen(row, n, board) {
   return solutions;
 ```
 
-Here is the full source code, [n-queen.js](./code-samples/n-queen.js).
+Here is the full source code, [n-queen.js](./code-sample/n-queen.js).
 
 Let's try it for $n = 5$.
 
