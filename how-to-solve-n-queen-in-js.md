@@ -133,4 +133,8 @@ Here is the output
 { solutions: 10 }
 ```
 
-@import "index.md"
+As you can see, all the possible solutions are printed.
+
+---
+
+[back to home](./index.html)
