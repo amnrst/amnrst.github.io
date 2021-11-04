@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>index</title>
+      <title>how-to-teach-python-to-beginners</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -266,22 +266,134 @@ pre[data-line] .line-highlight[data-end]:after {
   display: none;
 }
 </style>
-<h5 class="mume-header" id="hi-welcome-to-my-amnrsthttpstwittercomamnrst-blog">Hi, welcome to my (<a href="https://twitter.com/amnrst">@amnrst</a>) blog!</h5>
+<p><a href="./index.html">back to home</a></p>
+<h2 class="mume-header" id="how-to-teach-python-to-beginners">How to teach python to beginners</h2>
 
-<hr>
-<h3 class="mume-header" id="articles">Articles</h3>
+<p>I while ago I wanted to teach my brother programming.<br>
+The obvious language to start is python, I so dug down on the google search and found this awesome tutorial to start with <a href="https://snakify.org">snakify.org</a>. I goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more.</p>
+<p>Once that is done, there should be a next step. So I thought to put together a small mini project, as the next step.</p>
+<p>The rest of this blog post is a description, for a mini programming project. I describes an address book for managing contacts.</p>
+<h2 class="mume-header" id="address-book-program">Address book program</h2>
 
+<p>Write a python program, lets call it <code>address-book.py</code> that helps the user, manage his contacts.</p>
+<p>Here is how the program should work,<br>
+Each section will describe the input commands, and the expected results.</p>
+<p>The lines that start with <code>&gt;&gt;</code> are the outputs from program`</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash">$ python3 address-book.py
+Well to address book, <span class="token builtin class-name">type</span> <span class="token string">&quot;help&quot;</span> to learn more.
+<span class="token operator">&gt;&gt;</span>
+</pre><p>Unknown commands are rejected, for example:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> alkdjflkjd
+ERROR: <span class="token builtin class-name">command</span> <span class="token string">&quot;alkdjflkjd&quot;</span> not found<span class="token operator">!</span>
+</pre><h3 class="mume-header" id="add">add</h3>
+
+<p><code>add &lt;contact-name&gt; &lt;phone-number&gt;</code> adds a new contact.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 0123456789
+Done<span class="token operator">!</span> added <span class="token string">&quot;amin&quot;</span> with phone number <span class="token string">&quot;0123456789&quot;</span>
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> omid 0224457890
+Done<span class="token operator">!</span> added <span class="token string">&quot;omid&quot;</span> with phone number <span class="token string">&quot;0224457890&quot;</span>
+</pre><p>Note that <code>add</code> will update an existing contact number, for example:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 0123456789
+Done<span class="token operator">!</span> added <span class="token string">&quot;amin&quot;</span> with phone number <span class="token string">&quot;0123456789&quot;</span>
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 0224457890
+Updated<span class="token operator">!</span> from <span class="token string">&quot;0123456789&quot;</span> to <span class="token string">&quot;0224457890&quot;</span> <span class="token keyword keyword-for">for</span> <span class="token string">&quot;amin&quot;</span>
+</pre><p>Bonus for <code>add</code>:</p>
 <ul>
-<li><a href="./how-to-solve-n-queen-in-js.html">How to solve n-queen in JavaScript</a></li>
-<li><a href="./how-to-setup-multiple-https-subdomains.html">How to setup multiple https subdomains</a></li>
-<li><a href="./how-to-teach-python-to-beginners.html">How to teach python to beginners</a></li>
+<li>reject phone numbers that are not numeric</li>
+<li><code>add amin 023abc</code> give an error</li>
+<li>also reject empty phone number</li>
+<li><code>add amin</code> gives an error</li>
 </ul>
+<h3 class="mume-header" id="search">search</h3>
+
+<p><code>search &lt;pattern&gt;</code></p>
+<p>The search command searches for all the added contacts so far, and prints the ones that match the given pattern.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 0123456789
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> omid 0224457890
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> ehsan 0224457890
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> hasan 0224457890
+<span class="token operator">&gt;&gt;</span> search mi
+Found <span class="token number">2</span> contacts:
+- amin <span class="token operator">=</span><span class="token operator">&gt;</span> 0123456789
+- omid <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+<span class="token operator">&gt;&gt;</span> search san
+Found <span class="token number">2</span> contacts:
+- ehsan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+- hasan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+<span class="token operator">&gt;&gt;</span> search naaa
+Sorry, no such contact found<span class="token operator">!</span>
+<span class="token operator">&gt;&gt;</span> search
+Ok, here are all contacts:
+- amin <span class="token operator">=</span><span class="token operator">&gt;</span> 0123456789
+- omid <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+- ehsan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+- hasan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+</pre><h3 class="mume-header" id="delete">delete</h3>
+
+<p><code>delete &lt;pattern&gt;</code> deletes the contacts that match the given pattern.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 0123456789
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> omid 0224457890
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> ehsan 0224457890
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> hasan 0224457890
+<span class="token operator">&gt;&gt;</span> delete mi
+Deleting <span class="token number">2</span> contacts:
+- amin <span class="token operator">=</span><span class="token operator">&gt;</span> 0123456789
+- omid <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+<span class="token operator">&gt;&gt;</span> delete san
+Deleting <span class="token number">2</span> contacts:
+- ehsan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+- hasan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
+<span class="token operator">&gt;&gt;</span> Delete naaa
+Nothing to do, no contact found.
+<span class="token operator">&gt;&gt;</span> delete
+Sorry, you are not allowed to delete everything at once.
+</pre><h2 class="mume-header" id="address-book-program-extra">Address book program - Extra</h2>
+
+<p>Python gives you the ability to read and write from files, including text files.<br>
+Here is a good blog post explaining how it works: <a href="https://realpython.com/read-write-files-python/">https://realpython.com/read-write-files-python/</a></p>
+<p>Modify your program so that, it saves it&apos;s current state in a file, so if you restart it, it keeps working.</p>
+<p>Example:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash">$ python3 address-book.py
+Well to address book, <span class="token builtin class-name">type</span> <span class="token string">&quot;help&quot;</span> to learn more.
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> amin 01234567
+<span class="token punctuation">..</span>.
+<span class="token operator">&gt;&gt;</span> <span class="token function">add</span> omid 01234576
+<span class="token punctuation">..</span>.
+<span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">exit</span>
+Bye<span class="token operator">!</span>
+
+$ python3 address-book.py
+<span class="token punctuation">..</span>.
+<span class="token operator">&gt;&gt;</span> search
+Found <span class="token number">2</span> contacts:
+- amin <span class="token operator">=</span><span class="token operator">&gt;</span> 01234567
+- omid <span class="token operator">=</span><span class="token operator">&gt;</span> 01234576
+<span class="token operator">&gt;&gt;</span> delete omid
+<span class="token punctuation">..</span>.
+<span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">exit</span>
+<span class="token punctuation">..</span>.
+
+$ python3 address-book.py
+<span class="token operator">&gt;&gt;</span> search
+Found <span class="token number">1</span> contact:
+- amin <span class="token operator">=</span><span class="token operator">&gt;</span> 01234567
+<span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">exit</span>
+<span class="token punctuation">..</span>.
+
+$
+</pre><p>tips, try to save your contacts, in a file as you exit the program, and read it back when the program starts. the <code>file.readline</code> and <code>file.writeline</code> should help you with that.</p>
 
       </div>
-      <div class="md-sidebar-toc"><pre><code>- [Hi, welcome to my (@amnrst) blog!](#hi-welcome-to-my-amnrsthttpstwittercomamnrst-blog)
-</code></pre>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#how-to-teach-python-to-beginners">How to teach python to beginners</a></li>
+<li><a href="#address-book-program">Address book program</a>
 <ul>
-<li><a href="#articles">Articles</a></li>
+<li><a href="#add">add</a></li>
+<li><a href="#search">search</a></li>
+<li><a href="#delete">delete</a></li>
+</ul>
+</li>
+<li><a href="#address-book-program-extra">Address book program - Extra</a></li>
 </ul>
 </div>
       <a id="sidebar-toc-btn">&#x2261;</a>
