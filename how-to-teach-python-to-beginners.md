@@ -113,6 +113,22 @@ Nothing to do, no contact found.
 Sorry, you are not allowed to delete everything at once.
 ```
 
+### exit
+
+`exit` exits the program.
+
+### help
+
+`help` prints a help message for each command
+
+```bash
+>> help
+- add <name> <phone-number>
+- search <pattern>
+- delete <pattern>
+- exit
+```
+
 ## Address book program - Extra
 Python gives you the ability to read and write from files, including text files.
 Here is a good blog post explaining how it works: https://realpython.com/read-write-files-python/
