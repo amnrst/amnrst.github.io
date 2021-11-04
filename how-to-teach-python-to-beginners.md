@@ -5,22 +5,22 @@
 ## How to teach python to beginners
 
 A while ago I wanted to teach my brother programming.
-The obvious language to start is python, so I googled a lot and found this awesome tutorial to start with [snakify.org](https://snakify.org). It goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more.
+The obvious language to start with is python, because of it's simplicity. 
+I googled a lot and found this awesome tutorial to start with [snakify.org](https://snakify.org).  
+
+It goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more. Once that is done, there should be a next step. I thought about it and came up with a small mini project, to harden the lessens learned from [snakify](https://snakify.org).
+
+The rest of this blog post is the description, for a mini programming project.  
+It describes an address book for managing contacts. 
 
 
-Once that is done, there should be a next step. So I thought to put together a small mini project, as the next step.
+## The address book program
 
-The rest of this blog post is a description, for a mini programming project. I describes an address book for managing contacts. 
+Write a python program, lets call it `address-book.py` that helps the user, manage his phone contacts.
 
+Here is how the program works, it takes a line as input and processes it.  
 
-## Address book program
-
-Write a python program, lets call it `address-book.py` that helps the user, manage his contacts.
-
-Here is how the program should work, 
-Each section will describe the input commands, and the expected results.
-
-The lines that start with `>>` are the outputs from program`
+The lines that start with `>>` are the inputs to the program.
 
 ```bash
 $ python3 address-book.py
@@ -28,8 +28,9 @@ Welcome to address book, type "help" to learn more.
 >>
 ```
 
-Unknown commands are rejected, for example:
+Each following section describes supported commands, and the expected results.
 
+Unknown commands are rejected, for example:
 
 ```bash
 >> alkdjflkjd
@@ -100,11 +101,11 @@ Ok, here are all contacts:
 >> add ehsan 0224457890
 >> add hasan 0224457890
 >> delete mi
-Deleting 2 contacts:
+Deleted 2 contacts:
 - amin => 0123456789
 - omid => 0224457890
 >> delete san
-Deleting 2 contacts:
+Deleted 2 contacts:
 - ehsan => 0224457890
 - hasan => 0224457890
 >> Delete naaa

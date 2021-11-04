@@ -270,19 +270,21 @@ pre[data-line] .line-highlight[data-end]:after {
 <h2 class="mume-header" id="how-to-teach-python-to-beginners">How to teach python to beginners</h2>
 
 <p>A while ago I wanted to teach my brother programming.<br>
-The obvious language to start is python, so I googled a lot and found this awesome tutorial to start with <a href="https://snakify.org">snakify.org</a>. It goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more.</p>
-<p>Once that is done, there should be a next step. So I thought to put together a small mini project, as the next step.</p>
-<p>The rest of this blog post is a description, for a mini programming project. I describes an address book for managing contacts.</p>
-<h2 class="mume-header" id="address-book-program">Address book program</h2>
+The obvious language to start with is python, because of it&apos;s simplicity.<br>
+I googled a lot and found this awesome tutorial to start with <a href="https://snakify.org">snakify.org</a>.</p>
+<p>It goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more. Once that is done, there should be a next step. I thought about it and came up with a small mini project, to harden the lessens learned from <a href="https://snakify.org">snakify</a>.</p>
+<p>The rest of this blog post is the description, for a mini programming project.<br>
+It describes an address book for managing contacts.</p>
+<h2 class="mume-header" id="the-address-book-program">The address book program</h2>
 
-<p>Write a python program, lets call it <code>address-book.py</code> that helps the user, manage his contacts.</p>
-<p>Here is how the program should work,<br>
-Each section will describe the input commands, and the expected results.</p>
-<p>The lines that start with <code>&gt;&gt;</code> are the outputs from program`</p>
+<p>Write a python program, lets call it <code>address-book.py</code> that helps the user, manage his phone contacts.</p>
+<p>Here is how the program works, it takes a line as input and processes it.</p>
+<p>The lines that start with <code>&gt;&gt;</code> are the inputs to the program.</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash">$ python3 address-book.py
 Welcome to address book, <span class="token builtin class-name">type</span> <span class="token string">&quot;help&quot;</span> to learn more.
 <span class="token operator">&gt;&gt;</span>
-</pre><p>Unknown commands are rejected, for example:</p>
+</pre><p>Each following section describes supported commands, and the expected results.</p>
+<p>Unknown commands are rejected, for example:</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token operator">&gt;&gt;</span> alkdjflkjd
 ERROR: <span class="token builtin class-name">command</span> <span class="token string">&quot;alkdjflkjd&quot;</span> not found<span class="token operator">!</span>
 </pre><h3 class="mume-header" id="add">add</h3>
@@ -336,11 +338,11 @@ Ok, here are all contacts:
 <span class="token operator">&gt;&gt;</span> <span class="token function">add</span> ehsan 0224457890
 <span class="token operator">&gt;&gt;</span> <span class="token function">add</span> hasan 0224457890
 <span class="token operator">&gt;&gt;</span> delete mi
-Deleting <span class="token number">2</span> contacts:
+Deleted <span class="token number">2</span> contacts:
 - amin <span class="token operator">=</span><span class="token operator">&gt;</span> 0123456789
 - omid <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
 <span class="token operator">&gt;&gt;</span> delete san
-Deleting <span class="token number">2</span> contacts:
+Deleted <span class="token number">2</span> contacts:
 - ehsan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
 - hasan <span class="token operator">=</span><span class="token operator">&gt;</span> 0224457890
 <span class="token operator">&gt;&gt;</span> Delete naaa
@@ -397,7 +399,7 @@ $
       </div>
       <div class="md-sidebar-toc"><ul>
 <li><a href="#how-to-teach-python-to-beginners">How to teach python to beginners</a></li>
-<li><a href="#address-book-program">Address book program</a>
+<li><a href="#the-address-book-program">The address book program</a>
 <ul>
 <li><a href="#add">add</a></li>
 <li><a href="#search">search</a></li>
