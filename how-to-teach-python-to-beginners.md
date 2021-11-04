@@ -4,8 +4,8 @@
 
 ## How to teach python to beginners
 
-I while ago I wanted to teach my brother programming.
-The obvious language to start is python, I so dug down on the google search and found this awesome tutorial to start with [snakify.org](https://snakify.org). I goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more.
+A while ago I wanted to teach my brother programming.
+The obvious language to start is python, so I googled a lot and found this awesome tutorial to start with [snakify.org](https://snakify.org). It goes through the basics, like variables, conditional statements, functions, lists, dictionaries, sets and some more.
 
 
 Once that is done, there should be a next step. So I thought to put together a small mini project, as the next step.
@@ -24,7 +24,7 @@ The lines that start with `>>` are the outputs from program`
 
 ```bash
 $ python3 address-book.py
-Well to address book, type "help" to learn more.
+Welcome to address book, type "help" to learn more.
 >>
 ```
 
@@ -123,7 +123,7 @@ Modify your program so that, it saves it's current state in a file, so if you re
 Example:
 ```bash
 $ python3 address-book.py
-Well to address book, type "help" to learn more.
+Welcome to address book, type "help" to learn more.
 >> add amin 01234567
 ...
 >> add omid 01234576
