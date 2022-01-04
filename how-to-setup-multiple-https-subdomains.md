@@ -73,7 +73,7 @@ Here is the commands I used for debian:
 ```bash
 # install a few common terminal tools
 apt update
-apt install tmux git build-tools tree wget curl
+apt install tmux git build-essential tree wget curl
 
 # setup docker pre-requisites
 apt install apt-transport-https ca-certificates curl gnupg lsb-release

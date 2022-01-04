@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:////Users/aminroosta/.vscode-insiders/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      <link rel="stylesheet" href="file:////Users/aminroosta/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
       
       
       
@@ -270,18 +270,18 @@ pre[data-line] .line-highlight[data-end]:after {
 <h2 class="mume-header" id="how-to-setup-multiple-https-subdomains">How to setup multiple https subdomains</h2>
 
 <p>In this article I explain how I run multiple docker containers, each having its own subdomain, serving http but being visible to the outside wold through https.</p>
-<img src="assets/nginx-subdomain-flow.png?0.7683637601560493" width="640px" title="linode add subdomain">
+<img src="assets/nginx-subdomain-flow.png?0.14240495727330238" width="640px" title="linode add subdomain">
 <p>The first steps is to buy a domain and a virtual private server (or VPS for short). There are tons of options, I used <a href="https://domains.google.com">google domains</a> to buy a domain, and <a href="https://www.linode.com/">linode.com</a> as my cloud provider.</p>
 <h4 class="mume-header" id="how-to-buy-a-domain">How to buy a domain</h4>
 
 <p>Go to <a href="http://domains.google.com">domains.google.com</a> and follow the UI, you can find many domains for less than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi mathvariant="normal">$</mi><mi mathvariant="normal">/</mi><mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">10\$/year</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10$/</span><span class="mord mathnormal">ye</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>, depending on your location as low as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi mathvariant="normal">$</mi><mi mathvariant="normal">/</mi><mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">5\$/year</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5$/</span><span class="mord mathnormal">ye</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>.</p>
-<img src="assets/google-buy-domain.png?0.16095772605494973" width="640px" title="buy a google domain">
+<img src="assets/google-buy-domain.png?0.16312044292004524" width="640px" title="buy a google domain">
 <p>Although Google can be used to manage DNS records directly, I used the  linode <a href="https://www.linode.com/docs/guides/dns-manager/">dns manager</a>, to do that we I set linode name servers on the google domain.</p>
-<img src="assets/google-set-nameserver.png?0.2377315542479801" width="640px" title="set nameservers on google domains">
+<img src="assets/google-set-nameserver.png?0.3678031308970251" width="640px" title="set nameservers on google domains">
 <h4 class="mume-header" id="how-to-buy-a-linode">How to buy a Linode</h4>
 
 <p>It&apos;s time to buy a VPS from linode, I chose Debian because it&apos;s very stable distribution, and has a great support &amp; community.</p>
-<img src="assets/linode-buy-vps.png?0.8415897798788046" width="640px" title="buy vps from linode">
+<img src="assets/linode-buy-vps.png?0.5345927473121066" width="640px" title="buy vps from linode">
 <p>If you scroll down, there is a section for the root password.<br>
 Once your server is created, up, and running, use that password for the <code>ssh</code> command.</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">ssh</span> root@<span class="token operator">&lt;</span>vps-ip-address<span class="token operator">&gt;</span>
@@ -292,7 +292,7 @@ Once your server is created, up, and running, use that password for the <code>ss
 <span class="token comment"># copy public key to clipboard on macos</span>
 <span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">|</span> xclip -selection clipboard
 <span class="token comment"># copy public key on linux</span>
-</pre><img src="assets/linode-set-password.png?0.7412329122463561" width="640px" title="set linode password">
+</pre><img src="assets/linode-set-password.png?0.6773284057094795" width="640px" title="set linode password">
 <p>Once the server is created, log into your node.<br>
 As a bonus you can give your server a nickname in <code>~/.ssh/config</code>.</p>
 <pre data-role="codeBlock" data-info="yaml" class="language-yaml">Host linode
@@ -309,7 +309,7 @@ As a bonus you can give your server a nickname in <code>~/.ssh/config</code>.</p
 <p>Here is the commands I used for debian:</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token comment"># install a few common terminal tools</span>
 <span class="token function">apt</span> update
-<span class="token function">apt</span> <span class="token function">install</span> tmux <span class="token function">git</span> build-tools tree <span class="token function">wget</span> <span class="token function">curl</span>
+<span class="token function">apt</span> <span class="token function">install</span> tmux <span class="token function">git</span> build-essential tree <span class="token function">wget</span> <span class="token function">curl</span>
 
 <span class="token comment"># setup docker pre-requisites</span>
 <span class="token function">apt</span> <span class="token function">install</span> apt-transport-https ca-certificates <span class="token function">curl</span> gnupg lsb-release
@@ -334,12 +334,12 @@ systemctl <span class="token builtin class-name">enable</span> containerd
 <h4 class="mume-header" id="how-to-import-your-domain-to-linode">How to import your domain to linode</h4>
 
 <p>On the left panel side, you can import your domain, as long as the domain registrar points to linode name servers <code>ns&lt;1, ..., 5&gt;.linode.com</code>.</p>
-<img src="assets/linode-add-domain.png?0.18783335138676382" width="640px" title="add domain to linode">
+<img src="assets/linode-add-domain.png?0.3908120699673352" width="640px" title="add domain to linode">
 <p>If you choose an existing server, in this case <code>debian-ca-central</code>, linode automatically adds the necessary dns records.</p>
-<img src="assets/linode-dns-records.png?0.26831886609651723" width="640px" title="linode dns records">
+<img src="assets/linode-dns-records.png?0.4370326579230377" width="640px" title="linode dns records">
 <p>To Add subdomains, click on <code>Add an A/AAAA Record</code> and use the same ip address as the server.</p>
 <p>Later in the tutorial we will configure nginx to proxy the traffic for multiple subdomains. For now make sure to add a subdomain named <code>filebrowser</code> which we will set up shortly.</p>
-<img src="assets/linode-add-subdomain.png?0.24808052701585792" width="320px" title="linode add subdomain">
+<img src="assets/linode-add-subdomain.png?0.9840013906552638" width="320px" title="linode add subdomain">
 <h4 class="mume-header" id="how-to-setup-nginx-for-https">How to setup nginx for https</h4>
 
 <p>We want to to run multiple containers, each serving http, have a nginx in front of everything, and proxy their traffic over https.</p>
@@ -441,9 +441,9 @@ docker-compose up -d
 <span class="token comment"># if needed, check the logs with</span>
 docker-compose logs -f
 </pre><p>The top level domain, should handle https, and serve the default <code>swag</code> files. We can change this later on by editing <code>.swag/nginx/nginx.conf</code> file to proxy the traffic to yet another container.</p>
-<img src="assets/nginx-top-domain.png?0.4376463942373512" width="440px" title="nginx top domain">
+<img src="assets/nginx-top-domain.png?0.872547423164761" width="440px" title="nginx top domain">
 <p>And the subdomain, is served as https, in this case points to our filebrowser example.</p>
-<img src="assets/nginx-subdomain.png?0.9022622897484924" width="360px" title="nginx subdomain">
+<img src="assets/nginx-subdomain.png?0.6354858307602602" width="360px" title="nginx subdomain">
 <p>If you have followed the tutorial so far, the username and password are both <code>admin</code> for <a href="https://filebrowser.org/installation">filebrowser</a> initially, you can change them in the app.</p>
 <hr>
 <p><a href="./index.html">back to home</a></p>
