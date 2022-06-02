@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>index</title>
+      <title>how-to-visualize-postgres-schema</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -266,17 +266,92 @@ pre[data-line] .line-highlight[data-end]:after {
   display: none;
 }
 </style>
-<h5 class="mume-header" id="hi-welcome-to-my-amnrsthttpstwittercomamnrst-blog">Hi, welcome to my (<a href="https://twitter.com/amnrst">@amnrst</a>) blog!</h5>
+<p><a href="./index.html">back to home</a></p>
+<h2 class="mume-header" id="how-to-visualize-postgresql-schema">How to visualize postgresql schema</h2>
 
-<hr>
-<h3 class="mume-header" id="articles">Articles</h3>
-
+<p><a href="https://github.com/schemaspy/schemaspy">SchemaSpy</a> is tool that generates html &amp; csv files to visualize and navigate a database.</p>
+<p>This tutorial documents the steps for visualizing a postgresql database schema.</p>
 <ul>
-<li><a href="./how-to-solve-n-queen-in-js.html">How to solve n-queen in JavaScript</a></li>
-<li><a href="./how-to-setup-multiple-https-subdomains.html">How to setup multiple https subdomains</a></li>
-<li><a href="./how-to-teach-python-to-beginners.html">How to teach python to beginners</a></li>
-<li><a href="./dot-language-snippets.html">Dot language snippets</a></li>
-<li><a href="./how-to-visualize-postgres-schema.html">How to visualize postgresql schema</a></li>
+<li>
+<p>Download the latest version jar file (<a href="https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0">schemaspy-6.1.0.jar</a>) for schemaspy.</p>
+</li>
+<li>
+<p>Download the postgres JDBC driver postgresql from <a href="https://jdbc.postgresql.org/download.html">oracle</a>, I&apos;ve tried <a href="https://jdbc.postgresql.org/download/postgresql-42.3.3.jar">postgresql-42.3.3.jar</a> without any issues.</p>
+</li>
+<li>
+<p>Install java, but not the latest version!</p>
+<ul>
+<li>Unfortunately <code>schemaspy-6.1.0</code> uses a few java libraries that were dropped in java-14.</li>
+</ul>
+</li>
+<li>
+<p>Install <a href="https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies">asdf</a> which is a tool to install and manage multiple runtime versions.</p>
+<ul>
+<li><code>brew install asdf</code></li>
+</ul>
+</li>
+<li>
+<p>Add the asdf <a href="https://github.com/halcyon/asdf-java">java plugin</a>.</p>
+<ul>
+<li><code>asdf plugin-add java https://github.com/halcyon/asdf-java.git</code>.</li>
+</ul>
+</li>
+<li>
+<p>Look for a compatible java version:</p>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash">$ asdf list-all java <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&apos;\-13&apos;</span>
+zulu-13.35.1019
+zulu-13.35.1025
+zulu-13.37.21
+zulu-13.40.15
+zulu-13.42.17
+zulu-13.44.13
+zulu-13.46.15
+</pre><ul>
+<li>Install one, and verify that you have the right java version.</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>$ asdf install java zulu-13.44.13
+############################################################# 100%
+
+$ ~/.asdf/installs/java/zulu-13.44.13/bin/java --version
+openjdk 13.0.9 2021-10-19
+OpenJDK Runtime Environment Zulu13.44+13-CA (build 13.0.9+3-MTS)
+OpenJDK 64-Bit Server VM Zulu13.44+13-CA (build 13.0.9+3-MTS, mixed mode)
+</code></pre><hr>
+<p><strong>The final step is to run schema spy to generate the visualizations:</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash">$ ~/.asdf/installs/java/zulu-13.44.13/bin/java -Xss4m -jar schemaspy-6.1.0.jar -t pgsql11 -dp /Users/amin/dev/schema/postgresql-42.3.3.jar -db testdb -u amin -o ./output -host localhost -imageformat svg -vizjs
+</pre><ul>
+<li>
+<p><code>-Xss4m</code> tells java to increase the stack size</p>
+<ul>
+<li>it&apos;s useful to prevent stack overflow if your database is huge.</li>
+</ul>
+</li>
+<li>
+<p><code>-jar schemaspy-6.1.0.jar</code> tells java to execute the schema-spy jar file.</p>
+</li>
+<li>
+<p><code>-t pgsql11</code> is the database type, you can use this command to find the right db version:</p>
+<ul>
+<li><code>~/.asdf/installs/java/zulu-13.44.13/bin/java -jar schemaspy-6.1.0.jar -dbhelp</code></li>
+</ul>
+</li>
+<li>
+<p><code>-dp</code> is the full path to the JDBC driver, <code>postgresql-42.3.3.jar</code> in our case.</p>
+</li>
+<li>
+<p><code>-db</code> is the database name, <code>-u</code> is the database user and <code>-host</code> is the database host</p>
+</li>
+<li>
+<p><code>-imageformat svg -vizjs</code> is asking schema-spy to generate svg files using it&apos;s internal <code>visjs</code> library.</p>
+</li>
+<li>
+<p>And last but not least <code>-o</code>, the output folder</p>
+<ul>
+<li>Once schema-spy generates finishes, open the <code>index.html</code> file in a browser.</li>
+</ul>
+</li>
 </ul>
 
       </div>
